@@ -264,11 +264,19 @@ PRODUCT_PACKAGES += \
     NfcNci \
     Tag
 
+# NFCEE access control
+ifeq ($(TARGET_BUILD_VARIANT),user)
+    NFCEE_ACCESS_PATH := device/moto/shamu/nfc/nfcee_access.xml
+else
+    NFCEE_ACCESS_PATH := device/moto/shamu/nfc/nfcee_access_debug.xml
+endif
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
     device/moto/shamu/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    device/moto/shamu/nfc/libnfc-brcm-20795a10.conf:system/etc/libnfc-brcm-20795a10.conf
+    device/moto/shamu/nfc/libnfc-brcm-20795a10.conf:system/etc/libnfc-brcm-20795a10.conf \
+    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
