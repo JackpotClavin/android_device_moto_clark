@@ -9,3 +9,5 @@
 /dev/motosh                        u:object_r:sensors_device:s0
 /dev/motosh_as                     u:object_r:sensors_device:s0
 /dev/motosh_ms                     u:object_r:sensors_device:s0
+
+/sys/vibrator/pwmvalue             u:object_r:vibeamp_sysfs:s0
