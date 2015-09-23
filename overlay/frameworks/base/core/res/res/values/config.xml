@@ -263,4 +263,7 @@
     <integer name="config_multiuserMaximumUsers">4</integer>
     <!--  Whether Multiuser UI should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
+
+    <!-- Flag specifying whether VoLTE & VT is availasble on device -->
+    <bool name="config_device_volte_available">true</bool>
 </resources>
