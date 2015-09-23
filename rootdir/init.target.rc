@@ -48,7 +48,7 @@ on fs
     mount ext4 /dev/block/bootdevice/by-name/modem /firmware ro nosuid nodev context=u:object_r:firmware_file:s0
 
     wait /dev/block/bootdevice/by-name/bluetooth
-    mount ext4 /dev/block/bootdevice/by-name/bluetooth /bt_firmware ro nosuid nodev context=u:object_r:bt_firmware_file:s0
+    mount ext4 /dev/block/bootdevice/by-name/bluetooth /bt_firmware ro nosuid nodev
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
