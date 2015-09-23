@@ -66,7 +66,18 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     device/moto/clark/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    device/moto/clark/configs/audio/audio_effects.conf:system/etc/audio_effects.conf
+    device/moto/clark/configs/audio/audio_effects.conf:system/etc/audio_effects.conf \
+    device/moto/clark/configs/audio/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
+    device/moto/clark/configs/audio/audio_ext_spkr.conf:system/etc/audio_ext_spkr.conf \
+    device/moto/clark/configs/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    device/moto/clark/configs/audio/audio_platform_info_i2s.xml:system/etc/audio_platform_info_i2s.xml \
+    device/moto/clark/configs/audio/listen_platform_info.xml:system/etc/listen_platform_info.xml \
+    device/moto/clark/configs/audio/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
+    device/moto/clark/configs/audio/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
+    device/moto/clark/configs/audio/audio_effects.conf:system/etc/audio_effects.conf \
+    device/moto/clark/configs/audio/audio_output_policy.conf:system/etc/audio_output_policy.conf \
+    device/moto/clark/configs/audio/audio_output_policy.conf:system/vendor/etc/audio_output_policy.conf \
+    device/moto/clark/configs/audio/vendor_audio_effects.conf:system/vendor/etc/audio_effects.conf
 
 PRODUCT_COPY_FILES += \
     device/moto/clark/configs/media/media_profiles.xml:system/etc/media_profiles.xml \
