@@ -81,6 +81,10 @@ PRODUCT_COPY_FILES += \
     device/moto/clark/configs/sensors/sensorhub-blacklist.txt:system/etc/firmware/sensorhub-blacklist.txt
 
 PRODUCT_COPY_FILES += \
+    device/moto/clark/configs/thermal/perf-profile0.conf:system/vendor/etc/perf-profile0.conf \
+    device/moto/clark/configs/thermal/thermal-engine-clark.conf:system/etc/thermal-engine-clark.conf
+
+PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
@@ -235,6 +239,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.crypto.fuse_sdcard=true \
     persist.fuse_sdcard=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.extension_library=libqti-perfd-client.so
 
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
