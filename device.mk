@@ -65,12 +65,12 @@ PRODUCT_COPY_FILES += \
     device/moto/clark/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 PRODUCT_COPY_FILES += \
-    device/moto/clark/audio_policy.conf:system/etc/audio_policy.conf \
-    device/moto/clark/audio_effects.conf:system/etc/audio_effects.conf
+    device/moto/clark/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    device/moto/clark/configs/audio/audio_effects.conf:system/etc/audio_effects.conf
 
 PRODUCT_COPY_FILES += \
-    device/moto/clark/media_profiles.xml:system/etc/media_profiles.xml \
-    device/moto/clark/media_codecs.xml:system/etc/media_codecs.xml
+    device/moto/clark/configs/media/media_profiles.xml:system/etc/media_profiles.xml \
+    device/moto/clark/configs/media/media_codecs.xml:system/etc/media_codecs.xml
 
 PRODUCT_COPY_FILES += \
     device/moto/clark/configs/wifi/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
@@ -113,7 +113,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
 
 PRODUCT_COPY_FILES += \
-    device/moto/clark/mixer_paths.xml:system/etc/mixer_paths.xml
+    device/moto/clark/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # NFC access control + feature files + configuration
 PRODUCT_COPY_FILES += \
