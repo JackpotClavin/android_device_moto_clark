@@ -201,6 +201,9 @@ PRODUCT_PACKAGES += \
     mm-jpeg-interface-test \
     mm-qcamera-app
 
+PRODUCT_PACKAGES += \
+    lights.msm8992
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     e2fsck
