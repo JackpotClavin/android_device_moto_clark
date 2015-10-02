@@ -41,15 +41,14 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>1</item>
-        <item>4</item>
-        <item>40</item>
-        <item>350</item>
-        <item>600</item>
-        <item>1000</item>
-        <item>1600</item>
-        <item>3000</item>
+        <item>9</item>
+        <item>30</item>
+        <item>100</item>
+        <item>325</item>
+        <item>1250</item>
+        <item>3500</item>
         <item>10000</item>
+        <item>20000</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -57,16 +56,15 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>13</item>   <!-- 0-1 -->
-        <item>26</item>   <!-- 1-4 -->
-        <item>73</item>   <!-- 4-40 -->
-        <item>88</item>   <!-- 40-350 -->
-        <item>130</item>  <!-- 350-600 -->
-        <item>167</item>  <!-- 600-1000 -->
-        <item>204</item>  <!-- 1000-1600 -->
-        <item>240</item>  <!-- 1600-3000 -->
-        <item>254</item>  <!-- 3000-10000 -->
-        <item>255</item>  <!-- 10000+ -->
+        <!--     9 --> <item>18</item>
+        <!--    30 --> <item>30</item>
+        <!--   100 --> <item>59</item>
+        <!--   325 --> <item>74</item>
+        <!--  1250 --> <item>92</item>
+        <!--  3500 --> <item>118</item>
+        <!-- 10000 --> <item>155</item>
+        <!-- 20000 --> <item>222</item>
+                       <item>255</item>
     </integer-array>
 
     <!-- Array of output values for button backlight corresponding to the LUX values
@@ -87,7 +85,10 @@
     </integer-array>
 
     <!-- Minimum screen brightness allowed by the power manager. -->
-    <integer name="config_screenBrightnessDim">1</integer>
+    <integer name="config_screenBrightnessDim">17</integer>
+
+    <!-- Screen brightness when dozing. -->
+    <integer name="config_screenBrightnessDoze">17</integer>
 
     <!-- Default screen brightness setting.
          Must be in the range specified by minimum and maximum. -->
@@ -95,7 +96,7 @@
 
     <!-- Minimum screen brightness setting allowed by the power manager.
          The user is forbidden from setting the brightness below this level. -->
-    <integer name="config_screenBrightnessSettingMinimum">1</integer>
+    <integer name="config_screenBrightnessSettingMinimum">17</integer>
 
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
     <bool name="config_unplugTurnsOnScreen">true</bool>
@@ -108,10 +109,7 @@
     <bool name="config_cellBroadcastAppLinks">true</bool>
 
     <!-- Shutdown if the battery temperature exceeds (this value * 0.1) Celsius. -->
-    <integer name="config_shutdownBatteryTemperature">600</integer>
-
-    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveNotificationLed">true</bool>
+    <integer name="config_shutdownBatteryTemperature">680</integer>
 
     <!-- Default color for notification LED is white. -->
     <color name="config_defaultNotificationColor">#ffffffff</color>
@@ -129,8 +127,18 @@
          USB interfaces.  If the device doesn't want to support tething over USB this should
          be empty.  An example would be "usb.*" -->
     <string-array translatable="false" name="config_tether_usb_regexs">
-        <item>"usb\\d"</item>
         <item>"rndis\\d"</item>
+    </string-array>
+
+    <string-array translatable="false" name="config_oemUsbModeOverride">
+        <item>"bp-tools:rndis,adb:rndis,diag,diag_mdm,serial_hsic,serial_tty,rmnet_hsic,usbnet,adb"</item>
+        <item>"bp-tools:rndis:rndis,diag,diag_mdm,serial_hsic,serial_tty,rmnet_hsic,usbnet,adb"</item>
+        <item>"bp-tools:mtp,adb:diag,diag_mdm,serial_hsic,serial_tty,rmnet_hsic,usbnet,adb"</item>
+        <item>"bp-tools:mtp:diag,diag_mdm,serial_hsic,serial_tty,rmnet_hsic,usbnet"</item>
+        <item>"mot-factory:rndis,adb:usbnet,adb"</item>
+        <item>"mot-factory:rndis:usbnet"</item>
+        <item>"mot-factory:mtp,adb:usbnet,adb"</item>
+        <item>"mot-factory:mtp:usbnet"</item>
     </string-array>
 
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
@@ -179,6 +187,7 @@
         <item>"mobile_cbs,12,0,2,60000,true"</item>
         <item>"mobile_ia,14,0,2,-1,true"</item>
         <item>"bluetooth,7,7,2,-1,true"</item>
+        <item>"ethernet,9,9,9,-1,true"</item>
     </string-array>
 
     <!-- This string array should be overridden by the device to present a list of radio
@@ -192,25 +201,14 @@
         <item>"7,1"</item>
     </string-array>
 
-    <!-- Whether WiFi display is supported by this device.
-         There are many prerequisites for this feature to work correctly.
-         Here are a few of them:
-         * The WiFi radio must support WiFi P2P.
-         * The WiFi radio must support concurrent connections to the WiFi display and
-           to an access point.
-         * The Audio Flinger audio_policy.conf file must specify a rule for the "r_submix"
-           remote submix module.  This module is used to record and stream system
-           audio output to the WiFi display encoder in the media server.
-         * The remote submix module "audio.r_submix.default" must be installed on the device.
-         * The device must be provisioned with HDCP keys (for protected content).
-    -->
-    <bool name="config_enableWifiDisplay">true</bool>
-
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
 
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
+
+    <!-- string indicating the OUI that should be used when generating random mac addresses -->
+    <string  translatable="false" name="config_wifi_random_mac_oui">92-68-C3</string>
 
     <!-- Setting this true forces the headset jack switches to use the/dev/input/event subsystem
          rather than the uevent framework. -->
@@ -231,7 +229,7 @@
     <!-- Vibrator pattern for feedback about a long screen/key press -->
     <integer-array name="config_longPressVibePattern">
         <item>0</item>
-        <item>7</item>
+        <item>25</item>
         <item>10</item>
     </integer-array>
 
@@ -241,29 +239,81 @@
     <!-- Vibrator pattern for feedback about touching a virtual key -->
     <integer-array name="config_virtualKeyVibePattern">
         <item>0</item>
-        <item>5</item>
-        <item>10</item>
+        <item>25</item>
+        <item>8</item>
     </integer-array>
 
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
     <integer-array name="config_keyboardTapVibePattern">
-        <item>10</item>
+        <item>25</item>
     </integer-array>
 
     <!-- Wifi driver supports batched scan -->
     <bool translatable="false" name="config_wifi_batched_scan_supported">true</bool>
 
     <!-- MMS user agent string -->
-    <string name="config_mms_user_agent" translatable="false">Nexus5</string>
+    <string name="config_mms_user_agent" translatable="false">nexus6</string>
 
     <!-- MMS user agent prolfile url -->
-    <string name="config_mms_user_agent_profile_url" translatable="false">http://gsm.lge.com/html/gsm/Nexus5-M3.xml</string>
+    <string name="config_mms_user_agent_profile_url" translatable="false">http://uaprof.motorola.com/phoneconfig/nexus6/Profile/nexus6.rdf</string>
 
     <!--  Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">4</integer>
     <!--  Whether Multiuser UI should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
 
-    <!-- Flag specifying whether VoLTE & VT is availasble on device -->
+    <!-- Dream of notifications -->
+    <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
+    <bool name="config_dozeAfterScreenOff">true</bool>
+    <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
+
+    <!-- Is the device capable of hot swapping an UICC Card -->
+    <bool name="config_hotswapCapable">true</bool>
+
+    <!-- Flag specifying whether VoLTE is availasble on device -->
     <bool name="config_device_volte_available">true</bool>
+
+    <!-- Configure mobile tcp buffer sizes in the form:
+         rat-name:rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max
+         If no value is found for the rat-name in use, the system default will be applied.
+    -->
+    <string-array name="config_mobile_tcp_buffers">
+        <item>umts:131072,262144,1452032,4096,16384,399360</item>
+        <item>hspa:131072,262144,2441216,4096,16384,399360</item>
+        <item>hsupa:131072,262144,2441216,4096,16384,399360</item>
+        <item>hsdpa:131072,262144,2441216,4096,16384,399360</item>
+        <item>hspap:131072,262144,2441216,4096,16384,399360</item>
+        <item>edge:16384,32768,131072,4096,16384,65536</item>
+        <item>gprs:4096,8192,24576,4096,8192,24576</item>
+        <item>1xrtt:16384,32768,131070,4096,16384,102400</item>
+        <item>evdo:131072,262144,1048576,4096,16384,524288</item>
+        <item>lte:524288,1048576,8388608,262144,524288,4194304</item>
+    </string-array>
+
+    <!-- Configure wifi tcp buffersizes in the form:
+         rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
+    <string name="config_wifi_tcp_buffers" translatable="false">524288,2097152,4194304,262144,524288,1048576</string>
+
+    <!-- Config determines whether to update phone object when voice registration
+         state changes. Voice radio tech change will always trigger an update of
+         phone object irrespective of this config -->
+    <bool name="config_switch_phone_on_voice_reg_state_change">false</bool>
+
+    <!-- Values for GPS configuration -->
+    <string-array translatable="false" name="config_gpsParameters">
+        <item>SUPL_HOST=supl.google.com</item>
+        <item>SUPL_PORT=7275</item>
+        <item>XTRA_SERVER_1=http://xtrapath1.izatcloud.net/xtra2.bin</item>
+        <item>XTRA_SERVER_2=http://xtrapath2.izatcloud.net/xtra2.bin</item>
+        <item>XTRA_SERVER_3=http://xtrapath3.izatcloud.net/xtra2.bin</item>
+        <item>NTP_SERVER=north-america.pool.ntp.org</item>
+        <item>SUPL_MODE=1</item>
+        <item>SUPL_VER=0x20000</item>
+        <item>LPP_PROFILE=0</item>
+        <item>NMEA_PROVIDER=0</item>
+        <item>A_GLONASS_POS_PROTOCOL_SELECT=0</item>
+        <item>ERR_ESTIMATE=0</item>
+        <item>INTERMEDIATE_POS=0</item>
+        <item>SUPL_ES=0</item>
+    </string-array>
 </resources>
