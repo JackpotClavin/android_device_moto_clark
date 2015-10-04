@@ -60,6 +60,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/moto/clark/sec_config:system/etc/sec_config
 
+PRODUCT_COPY_FILES += \
+    device/moto/clark/qcril.db:system/etc/motorola/qcril.db
+
 # Input device files for clark
 PRODUCT_COPY_FILES += \
     device/moto/clark/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
@@ -242,17 +245,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.speaker=true \
     audio.offload.gapless.enabled=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
-    rild.libargs=-d /dev/smd0 \
-    ril.subscription.types=NV,RUIM \
-    ril.subscription.types=RUIM \
-    persist.radio.apm_sim_not_pwdn=1 \
-    persist.radio.no_wait_for_card=1 \
-    persist.radio.mode_pref_nv10=1 \
-    persist.radio.force_get_pref=1 \
-    ro.telephony.default_network=10
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.crypto.fuse_sdcard=true \
