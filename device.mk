@@ -212,6 +212,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.msm8992
 
+PRODUCT_PACKAGES += \
+    power.msm8992
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     e2fsck

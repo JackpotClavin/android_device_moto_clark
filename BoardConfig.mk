@@ -69,6 +69,8 @@ BOARD_USES_QCOM_HARDWARE := true
 
 BOARD_USES_QC_TIME_SERVICES := true
 
+TARGET_POWERHAL_VARIANT := qcom
+
 # Wifi related defines
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
 BOARD_WLAN_DEVICE           := qcwcn
