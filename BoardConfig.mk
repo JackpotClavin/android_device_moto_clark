@@ -67,6 +67,8 @@ BOARD_USES_ALSA_AUDIO := true
 
 BOARD_USES_QCOM_HARDWARE := true
 
+BOARD_USES_QC_TIME_SERVICES := true
+
 # Wifi related defines
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
 BOARD_WLAN_DEVICE           := qcwcn
