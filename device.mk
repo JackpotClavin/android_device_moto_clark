@@ -161,8 +161,7 @@ PRODUCT_PACKAGES := \
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     libqsap_sdk \
-    libxml2 \
-    libtinyxml
+    libxml2
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
@@ -225,6 +224,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     bdAddrLoader
+
+PRODUCT_PACKAGES += \
+    libtinyxml \
+    libbson
 
 PRODUCT_PACKAGES += \
     pp_calib_data_mipi_mot_cmd_inx_QHD_0_570_v0.xml
