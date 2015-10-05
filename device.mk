@@ -161,7 +161,8 @@ PRODUCT_PACKAGES := \
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     libqsap_sdk \
-    libxml2
+    libxml2 \
+    libtinyxml
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
