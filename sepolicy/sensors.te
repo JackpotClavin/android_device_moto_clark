@@ -1,0 +1,2 @@
+type sensor_hub_exec, exec_type, file_type;
+domain_auto_trans(init, sensor_hub_exec, sensors)

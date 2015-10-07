@@ -1,0 +1,8 @@
+allow rmt_storage default_prop:property_service set;
+allow rmt_storage init:unix_stream_socket connectto;
+allow rmt_storage property_socket:sock_file write;
+allow rmt_storage unlabeled:file { read open };
+allow rmt_storage fsg_file:dir { read search };
+allow rmt_storage fsg_file:dir open;
+allow rmt_storage fsg_file:file read;
+allow rmt_storage fsg_file:file open;

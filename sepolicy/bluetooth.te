@@ -1,0 +1,16 @@
+type moto_wcnss_filter, domain;
+type moto_wcnss_filter_exec, exec_type, file_type;
+init_daemon_domain(moto_wcnss_filter)
+
+allow moto_wcnss_filter bluetooth_prop:property_service set;
+allow moto_wcnss_filter init:unix_stream_socket connectto;
+allow moto_wcnss_filter property_socket:sock_file write;
+allow moto_wcnss_filter self:capability { setuid setgid };
+allow moto_wcnss_filter serial_device:chr_file { read write ioctl open };
+
+allow bt_firmware_file self:filesystem associate;
+allow bluetooth bt_firmware_file:dir search;
+allow bluetooth bt_firmware_file:file read;
+allow bluetooth bt_firmware_file:file open;
+allow bluetooth bt_firmware_file:file getattr;
+allow bluetooth moto_wcnss_filter:unix_stream_socket connectto;
