@@ -1,0 +1,6 @@
+allow init bt_firmware_file:filesystem relabelto;
+allow init bt_firmware_file:filesystem relabelfrom;
+allow init fsg_file:filesystem relabelto;
+allow init fsg_file:filesystem relabelfrom;
+allow init bt_firmware_file:filesystem mount;
+allow init fsg_file:filesystem mount;
