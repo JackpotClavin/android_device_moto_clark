@@ -72,6 +72,8 @@ BOARD_USES_QC_TIME_SERVICES := true
 
 TARGET_POWERHAL_VARIANT := qcom
 
+TARGET_PROVIDES_LIBLIGHT := true
+
 # Hardware
 BOARD_HARDWARE_CLASS := device/moto/clark/cmhw
 

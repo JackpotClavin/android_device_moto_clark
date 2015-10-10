@@ -40,29 +40,14 @@ static struct light_state_t g_notification;
 static struct light_state_t g_battery;
 static int g_attention = 0;
 
-char const*const RED_LED_FILE
-        = "/sys/class/leds/red/brightness";
-
-char const*const GREEN_LED_FILE
-        = "/sys/class/leds/green/brightness";
-
-char const*const BLUE_LED_FILE
-        = "/sys/class/leds/blue/brightness";
+char const*const CHARGING_LED_BLINK_FILE
+        = "/sys/class/leds/charging/blink";
 
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
 
 char const*const BUTTON_FILE
         = "/sys/class/leds/button-backlight/brightness";
-
-char const*const RED_BLINK_FILE
-        = "/sys/class/leds/red/blink";
-
-char const*const GREEN_BLINK_FILE
-        = "/sys/class/leds/green/blink";
-
-char const*const BLUE_BLINK_FILE
-        = "/sys/class/leds/blue/blink";
 
 /**
  * device methods
@@ -90,6 +75,28 @@ write_int(char const* path, int value)
     } else {
         if (already_warned == 0) {
             ALOGE("write_int failed to open %s\n", path);
+            already_warned = 1;
+        }
+        return -errno;
+    }
+}
+
+static int
+write_str(char const* path, char *value)
+{
+    int fd;
+    static int already_warned = 0;
+
+    fd = open(path, O_RDWR);
+    if (fd >= 0) {
+        char buffer[PAGE_SIZE];
+        int bytes = sprintf(buffer, "%s\n", value);
+        int amt = write(fd, buffer, bytes);
+        close(fd);
+        return amt == -1 ? -errno : 0;
+    } else {
+        if (already_warned == 0) {
+            ALOGE("write_str failed to open %s\n", path);
             already_warned = 1;
         }
         return -errno;
@@ -129,10 +136,8 @@ static int
 set_speaker_light_locked(struct light_device_t* dev,
         struct light_state_t const* state)
 {
-    int red, green, blue;
-    int blink;
-    int onMS, offMS;
-    unsigned int colorRGB;
+    unsigned long onMS, offMS;
+    char blink_string[PAGE_SIZE];
 
     if(!dev) {
         return -1;
@@ -150,41 +155,16 @@ set_speaker_light_locked(struct light_device_t* dev,
             break;
     }
 
-    colorRGB = state->color;
-
 #if 0
-    ALOGD("set_speaker_light_locked mode %d, colorRGB=%08X, onMS=%d, offMS=%d\n",
-            state->flashMode, colorRGB, onMS, offMS);
+    ALOGD("set_speaker_light_locked mode %d, onMS=%lu, offMS=%lu\n",
+            state->flashMode, onMS, offMS);
 #endif
 
-    red = (colorRGB >> 16) & 0xFF;
-    green = (colorRGB >> 8) & 0xFF;
-    blue = colorRGB & 0xFF;
-
-    if (onMS > 0 && offMS > 0) {
-        blink = 1;
-    } else {
-        blink = 0;
-    }
-
-    if (blink) {
-        if (red) {
-            if (write_int(RED_BLINK_FILE, blink))
-                write_int(RED_LED_FILE, 0);
-	}
-        if (green) {
-            if (write_int(GREEN_BLINK_FILE, blink))
-                write_int(GREEN_LED_FILE, 0);
-	}
-        if (blue) {
-            if (write_int(BLUE_BLINK_FILE, blink))
-                write_int(BLUE_LED_FILE, 0);
-	}
-    } else {
-        write_int(RED_LED_FILE, red);
-        write_int(GREEN_LED_FILE, green);
-        write_int(BLUE_LED_FILE, blue);
-    }
+    sprintf(blink_string, "%lu,%lu", onMS, offMS);
+#if 0
+    ALOGD("set_speaker_light_locked string: %s\n", blink_string);
+#endif
+    write_str(CHARGING_LED_BLINK_FILE, blink_string);
 
     return 0;
 }

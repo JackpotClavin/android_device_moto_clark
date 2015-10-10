@@ -209,7 +209,7 @@ PRODUCT_PACKAGES += \
     mm-qcamera-app
 
 PRODUCT_PACKAGES += \
-    lights.msm8992
+    lights.clark
 
 PRODUCT_PACKAGES += \
     power.msm8992
