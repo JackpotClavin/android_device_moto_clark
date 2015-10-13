@@ -1,3 +1,5 @@
 type fsg_file, file_type;
 type bt_firmware_file, file_type;
 type modem_file, file_type;
+
+type vibeamp_sysfs, sysfs_type, file_type;
