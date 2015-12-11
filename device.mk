@@ -259,10 +259,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.gapless.enabled=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.crypto.fuse_sdcard=true \
-    persist.fuse_sdcard=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so
 
 # NFC packages

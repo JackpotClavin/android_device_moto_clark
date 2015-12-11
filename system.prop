@@ -26,7 +26,6 @@ persist.radio.oem_ind_to_both=0
 persist.qcril_uim_vcc_feature=1
 persist.data.qmi.adb_logmask=0
 persist.radio.0x9e_not_callname=1
-persist.radio.mode_pref_nv10=1
 persist.radio.mt_sms_ack=30
 persist.radio.force_get_pref=1
 persist.ims.volte=true
@@ -46,6 +45,10 @@ persist.radio.VT_USE_MDM_TIME=0
 persist.radio.videopause.mode=0
 persist.cne.feature=0
 persist.data.netmgrd.qos.enable=true
+persist.radio.mot_ecc_enabled=1
+persist.radio.mot_ecc_custid=common
+persist.radio.snapshot_timer=22
+persist.radio.snapshot_enabled=1
 
 # Camera
 persist.camera.HAL3.enabled=0
