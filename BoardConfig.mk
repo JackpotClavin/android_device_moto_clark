@@ -89,8 +89,8 @@ WIFI_DRIVER_MODULE_NAME     := "wlan"
 
 #BOARD_USES_SECURE_SERVICES := true
 
-BOARD_SEPOLICY_DIRS += \
-    device/moto/clark/sepolicy
+#BOARD_SEPOLICY_DIRS += \
+#    device/moto/clark/sepolicy
 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
