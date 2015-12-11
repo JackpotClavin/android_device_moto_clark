@@ -28,3 +28,7 @@ cid=${block_by_name}/cid
 /system/bin/chown -L root:mot_tcmd $cid
 /system/bin/chmod -L 0660 $cid
 
+#charging logs
+logscharging=${block_by_name}/logs-charging
+/system/bin/chown -L root:mot_pwric $logscharging
+/system/bin/chmod -L 0660 $logscharging

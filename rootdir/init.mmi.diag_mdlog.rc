@@ -19,7 +19,7 @@ service diag_mdlog /system/bin/diag_mdlog-wrap
     class late_start
     socket mdlog_cmd stream 0660 log diag
     user log
-    group log sdcard_rw sdcard_r media_rw qcom_diag
+    group log sdcard_rw sdcard_r media_rw qcom_diag mount
     disabled
 
 service safe_stop_mdlog /system/bin/diag_mdlog-wrap -s
