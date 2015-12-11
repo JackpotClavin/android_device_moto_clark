@@ -19,6 +19,11 @@
 #
 # Everything in this directory will become public
 
+LOCAL_KERNEL := device/moto/clark/kernel
+
+PRODUCT_COPY_FILES := \
+    $(LOCAL_KERNEL):kernel
+
 PRODUCT_COPY_FILES += \
     device/moto/clark/fstab.qcom:root/fstab.qcom \
     device/moto/clark/twrp.fstab:recovery/root/etc/twrp.fstab
