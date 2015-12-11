@@ -22,5 +22,5 @@ PRODUCT_BRAND := Android
 PRODUCT_MODEL := XT1575
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=motorola/clark_retus/clark:5.1.1/LPH23.116-18/18:user/release-keys \
-    PRIVATE_BUILD_DESC="clark_retus-user 5.1.1 LPH23.116-18 18 release-keys"
+    BUILD_FINGERPRINT=motorola/clark_retus/clark:6.0/MPH24.49-18/18:user/release-keys \
+    PRIVATE_BUILD_DESC="clark_retus-user 6.0 MPH24.49-18 18 release-keys"
