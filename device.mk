@@ -31,9 +31,7 @@ PRODUCT_COPY_FILES += \
     device/moto/clark/rootdir/init.mmi.debug.rc:root/init.mmi.debug.rc \
     device/moto/clark/rootdir/init.mmi.diag.rc:root/init.mmi.diag.rc \
     device/moto/clark/rootdir/init.mmi.diag_mdlog.rc:root/init.mmi.diag_mdlog.rc \
-    device/moto/clark/rootdir/init.mmi.early_boot.sh:root/init.mmi.early_boot.sh \
     device/moto/clark/rootdir/init.mmi.rc:root/init.mmi.rc \
-    device/moto/clark/rootdir/init.mmi.touch.sh:root/init.mmi.touch.sh \
     device/moto/clark/rootdir/init.mmi.usb.rc:root/init.mmi.usb.rc \
     device/moto/clark/rootdir/init.mmi.usb.sh:root/init.mmi.usb.sh \
     device/moto/clark/rootdir/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
@@ -54,8 +52,7 @@ PRODUCT_COPY_FILES += \
     device/moto/clark/rootdir/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
     device/moto/clark/rootdir/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
     device/moto/clark/rootdir/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
-    device/moto/clark/rootdir/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
-    device/moto/clark/rootdir/etc/init.wifi.mac.sh:system/etc/init.wifi.mac.sh
+    device/moto/clark/rootdir/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh
 
 PRODUCT_COPY_FILES += \
     device/moto/clark/sec_config:system/etc/sec_config
